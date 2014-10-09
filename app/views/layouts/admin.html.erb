@@ -7,22 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id='cms-container'>
-	    <div class='header'>
-	      <div class='wraper'>
-	        <div class='adminInfo'>
-	          Logged in as:
-	          admin@liftandshift.com
-	          |
-	          <a href="/users/sign_out" data-method="delete" rel="nofollow" style="color:#fff">Logout</a>
-	        </div>
-	        <div class='logo'>
-	          <a href='/'>
-	            <%= image_tag('images1.jpeg') %>
-	          </a>
-	        </div>
-	      <div class='clear'></div>
-	    </div>
+	<div id="cms-container">
+  		<div class="header">
+    		<div class="wraper">
+      			<div class="adminInfo">
+			        <% if user_signed_in? %>
+			          Logged in as:<%= current_user.email %> || <%= link_to 'Logout', destroy_user_session_path ,:method => :delete,:style=>"color:#fff" %>
+			        <% end %>
+      			</div>
+      			<div class="logo">
+			        <a href="/">
+			          <%= image_tag("75.jpg", size: "57x65") %>
+			        </a>
+			    </div>
+			    <div class="clear"></div>
+    		</div>
+  		</div>
 	</div>
 
 	<header class='mainNav boxLink'>
