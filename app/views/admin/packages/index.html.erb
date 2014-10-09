@@ -1,0 +1,42 @@
+<div class='bodyCnt'>
+    <div class='wraper'>
+      <div class='' id='inner-main'>
+        <div class='subNavCnt'>
+          <h1>Packages</h1>
+          <div class='moreLinks'>
+            <ul>
+              <li>
+                <a href="/services/new" class="btn"><%= link_to "Add New Blog", new_admin_package_path %></a>
+              </li>
+            </ul>
+          </div>
+          <div class='clear'></div>
+        </div>
+        <table class='cmsTable'>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Destination</th>
+            <th colspan="3"></th>
+          </tr>
+          <% @packages.each do |package| %>
+            <tr>
+              <td><%= package.name %></td>
+              <td><%= package.description %></td>
+              <td><%= package.destination %></td>
+              <td><%= link_to 'Show', admin_package_path(package) %></td>
+              <td><%= link_to 'Edit', edit_admin_package_path(package) %></td>
+              <td><%= link_to 'Destroy', admin_package_path(package), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </table>
+        <br>
+        <br>
+        <script>
+          var topNavPageId = 0
+        </script>
+      </div>
+    </div>
+    <div class='clear'></div>
+</div>
+<div class='clear'></div>

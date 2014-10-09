@@ -1,0 +1,68 @@
+<div class='bodyCnt'>
+  <div class='wraper'>
+    <div class='' id='inner-main'>
+      <div class='subNavCnt'>
+        <h1>New Packages</h1>
+        <div class='moreLinks'>
+          <ul>
+            <li>
+              <a href="/service_admin" class="btn"><%= link_to "Back", admin_packages_path %></a>
+            </li>
+          </ul>
+        </div>
+        <div class='clear'></div>
+      </div>
+
+      <div class='wraper'>
+        <%= nested_form_for([:admin,@package],:html=>{:multipart =>true} ) do |f| %>
+          <div class='sectionCnt'>
+            <h2>
+            Package
+            </h2>
+            <div class='formLayout'>
+
+              <div class='row'>
+                <label for="service_description"><%= f.label :name %></label>
+                <div class='inputCnt'>
+                  <%= f.text_field :name %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class='row'>
+                <label for="service_description"><%= f.label :description %></label>
+                <div class='inputCnt'>
+                  <%= f.text_area :description %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class='row'>
+                <label for="service_title"><%= f.label :destination %></label>
+                <div class='inputCnt'>
+                  <%= f.select :destination, ['Hyderabad','Bangalore','Mumbai'] %>
+                </div>
+                <div class='clear'></div>
+              </div>
+            
+              <div class='actions'>
+                <%= f.submit %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <style>
+          .message{color: red;display: block;padding-left: 144px;}
+        </style>
+      </div>
+      <script>
+        var topNavPageId = 0
+      </script>
+    </div>
+  </div>
+  <div class='clear'></div>
+</div>
+<div class='clear'></div>
+</div>
+
+

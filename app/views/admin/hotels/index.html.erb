@@ -1,0 +1,40 @@
+<div class='bodyCnt'>
+    <div class='wraper'>
+      <div class='' id='inner-main'>
+        <div class='subNavCnt'>
+          <h1>Hotels</h1>
+          <div class='moreLinks'>
+            <ul>
+              <li>
+                <a href="/services/new" class="btn"><%= link_to "Add New Hotel", new_admin_hotel_path %></a>
+              </li>
+            </ul>
+          </div>
+          <div class='clear'></div>
+        </div>
+        <table class='cmsTable'>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th colspan="3"></th>
+          </tr>
+          <% @hotels.each do |hotel| %>
+          <tr>
+            <td><%= hotel.name %></td>
+            <td><%= hotel.address %></td>
+            <td><%= link_to 'Show', admin_hotel_path(hotel) %></td>
+            <td><%= link_to 'Edit', edit_admin_hotel_path(hotel) %></td>
+            <td><%= link_to 'Destroy', admin_hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+        <br>
+        <br>
+        <script>
+          var topNavPageId = 0
+        </script>
+      </div>
+    </div>
+    <div class='clear'></div>
+  </div>
+  <div class='clear'></div>

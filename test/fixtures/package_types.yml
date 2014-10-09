@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transport: MyString
+  price: 9.99
+  days: 1
+  nights: 1
+  package_id: 1
+
+two:
+  transport: MyString
+  price: 9.99
+  days: 1
+  nights: 1
+  package_id: 1

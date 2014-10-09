@@ -1,0 +1,92 @@
+<div class='bodyCnt'>
+  <div class='wraper'>
+    <div class='' id='inner-main'>
+      <div class='subNavCnt'>
+        <h1>New PackageType</h1>
+        <div class='moreLinks'>
+          <ul>
+            <li>
+              <a href="/service_admin" class="btn"><%= link_to "Back", admin_package_types_path %></a>
+            </li>
+          </ul>
+        </div>
+        <div class='clear'></div>
+      </div>
+
+      <div class='wraper'>
+        <%= nested_form_for([:admin,@package_type],:html=>{:multipart =>true} ) do |f| %>
+          <div class='sectionCnt'>
+            <h2>
+            PackageType
+            </h2>
+            <div class='formLayout'>
+              
+              <div class='row'>
+                <label for="service_title"><%= f.label :transport %></label>
+                <div class='inputCnt'>
+                  <%= f.select :transport, ['Bus','Train','Airplane'] %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class='row'>
+                <label for="service_description"><%= f.label :price %></label>
+                <div class='inputCnt'>
+                  <%= f.text_field :price %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class='row'>
+                <label for="service_description"><%= f.label :days %></label>
+                <div class='inputCnt'>
+                  <%= f.number_field :days %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class='row'>
+                <label for="service_description"><%= f.label :nights %></label>
+                <div class='inputCnt'>
+                  <%= f.number_field :nights %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
+              <div class="row">
+                <%= f.fields_for :images do |image| %>
+                  <p>
+                    <%= image.label :image ,:style => "margin-left: 10px;" %>
+                    <%= image.file_field :avatar%>
+                    <%= image.link_to_remove "Remove image" ,:class => "remove_link",:style=>"margin-left: 110px;"%>
+                  </p>
+                  <br/>
+                <% end %>
+                <p>
+                  <%= f.link_to_add "Add image", :images , :class => "btn adminAddPhoto" %>
+                </p>
+              </div>
+              <div class='clear'></div>
+              <hr class='seprator'>
+
+              <div class='actions'>
+                <%= f.submit %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <style>
+          .message{color: red;display: block;padding-left: 144px;}
+        </style>
+      </div>
+      <script>
+        var topNavPageId = 0
+      </script>
+    </div>
+  </div>
+  <div class='clear'></div>
+</div>
+<div class='clear'></div>
+</div>
+
+
