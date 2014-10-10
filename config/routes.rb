@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-  get 'users/index'
-  end
-
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,6 +16,10 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       resources :blogs,:packages,:hotels,:package_types
+      
+      resources :blogs do
+        resources :comments,:only=>[:create,:destroy]
+      end
       
   # Example resource route with options:
   #   resources :products do

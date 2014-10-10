@@ -1,0 +1,47 @@
+<div class="well well-small">
+<% if blog.present? %>
+    
+    <div class="comment_section">
+        <h3>Comments</h3>
+        <% if blog.comments.count > 0 %>   
+            <% index = 0 %>
+            <% blog.comments.each do |comment| %>
+               <div>
+                   <p class="posted_by">
+                        <%=  index+=1 %>.&nbsp;
+                        Posted By <%= comment.created_at.strftime("%b %d '%y at %H:%M") %> 
+                    </p>
+                    <p><%= comment.description.html_safe %></p>
+                </div>
+               <hr>
+            <% end %>        
+        <% else %>
+            <p>Be your first comment ..!!!</p>
+        <% end %>
+    </div>
+
+    <% if current_user %>        
+        <div class="leave_comment_section">
+             <%= form_for ([blog,Comment.new]),remote: true do |f| %>        
+                <%= f.hidden_field :blog_id,value: blog[:id] %>
+                <%= f.hidden_field :user_id,value: current_user[:id] %>            
+                <div class="form_row">                             
+                    <%= f.text_area :description,cols: 100,rows: 3, required: true,:placeholder=>"Enter your comment....." %>
+                </div>
+                <%= f.submit "Submit",class: "btn btn-primary butt", id: "ajaxSubmit" %>            
+            <% end %>              
+        </div>  
+    <% else %>
+        <div class="leave_comment_section">
+            <%= link_to "Login to give comment", new_user_session_path %>
+        </div>
+    <% end %>
+
+<% end %> 
+</div>
+
+<style>
+input, textarea, .uneditable-input{
+    width: auto;
+}
+</style>
