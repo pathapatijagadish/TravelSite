@@ -1,0 +1,39 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 New Packages
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/service_admin"}= link_to "Back", admin_packages_path
+        .clear
+      .wraper
+        = nested_form_for([:admin,@package],:html=>{:multipart =>true} ) do |f|
+          .sectionCnt
+            %h2
+              Package
+            .formLayout
+              .row
+                %label{:for => "service_description"}= f.label :name
+                .inputCnt
+                  = f.text_field :name
+                .clear
+              .row
+                %label{:for => "service_description"}= f.label :description
+                .inputCnt
+                  = f.text_area :description
+                .clear
+              .row
+                %label{:for => "service_title"}= f.label :destination
+                .inputCnt
+                  = f.select :destination, ['Hyderabad','Bangalore','Mumbai']
+                .clear
+              .actions
+                = f.submit
+        :css
+          .message{color: red;display: block;padding-left: 144px;}
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

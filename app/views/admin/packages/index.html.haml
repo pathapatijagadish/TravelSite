@@ -1,0 +1,29 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 Packages
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/services/new"}= link_to "Add New Blog", new_admin_package_path
+        .clear
+      %table.cmsTable
+        %tr
+          %th Name
+          %th Description
+          %th Destination
+          %th{:colspan => "3"}
+        - @packages.each do |package|
+          %tr
+            %td= package.name
+            %td= package.description
+            %td= package.destination
+            %td= link_to 'Edit', edit_admin_package_path(package)
+            %td= link_to 'Destroy', admin_package_path(package), method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      %br/
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear
