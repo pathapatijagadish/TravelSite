@@ -1,0 +1,60 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 New PackageType
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/service_admin"}= link_to "Back", admin_package_types_path
+        .clear
+      .wraper
+        = nested_form_for([:admin,@package_type],:html=>{:multipart =>true} ) do |f|
+          .sectionCnt
+            %h2
+              PackageType
+            .formLayout
+              .row
+                %label{:for => "service_title"}= f.label :package_id
+                .inputCnt
+                  = f.select :package_id, Package.all.map {|x| [x.name,x.id]}, prompt: "select category"
+                .clear
+              .row
+                %label{:for => "service_title"}= f.label :transport
+                .inputCnt
+                  = f.select :transport, ['Bus','Train','Airplane']
+                .clear
+              .row
+                %label{:for => "service_description"}= f.label :price
+                .inputCnt
+                  = f.text_field :price
+                .clear
+              .row
+                %label{:for => "service_description"}= f.label :days
+                .inputCnt
+                  = f.number_field :days
+                .clear
+              .row
+                %label{:for => "service_description"}= f.label :nights
+                .inputCnt
+                  = f.number_field :nights
+                .clear
+              .row
+                = f.fields_for :images do |image|
+                  %p
+                    = image.label :image ,:style => "margin-left: 10px;"
+                    = image.file_field :avatar
+                    = image.link_to_remove "Remove image" ,:class => "remove_link",:style=>"margin-left: 110px;"
+                  %br/
+                %p
+                  = f.link_to_add "Add image", :images , :class => "btn adminAddPhoto"
+              .clear
+              %hr.seprator/
+              .actions
+                = f.submit
+        :css
+          .message{color: red;display: block;padding-left: 144px;}
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

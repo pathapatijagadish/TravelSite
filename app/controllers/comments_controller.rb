@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
   	end
 
 	def destroy
+      @blog = @comment.blog 
 	    @comment.destroy
 	    respond_to do |format|      
 	      format.js { 
@@ -36,17 +37,7 @@ class CommentsController < ApplicationController
         redirect_to root_url
     end
 
-=begin
-    def find_forum_and_topic
-      	#@forum = Forum.find(params[:forum_id])
-      	@topic = @forum.topics.find(params[:blog_id])
-      	rescue ActiveRecord::RecordNotFound
-        	flash[:error] = "Record not found ..!!!"
-        	redirect_to root_url
-    end
-=end
-
-    def comment_params
+     def comment_params
       params.require(:comment).permit(:description, :user_id, :blog_id)
     end
 end

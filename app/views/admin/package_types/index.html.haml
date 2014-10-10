@@ -1,0 +1,33 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 PackageTypes
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/services/new"}= link_to "Add New PackageType", new_admin_package_type_path
+        .clear
+      %table.cmsTable
+        %tr
+          %th Transport
+          %th Price
+          %th Days
+          %th Nights
+          %th Package
+          %th{:colspan => "3"}
+        - @package_types.each do |package_type|
+          %tr
+            %td= package_type.transport
+            %td= package_type.price
+            %td= package_type.days
+            %td= package_type.nights
+            %td= package_type.package_id
+            %td= link_to 'Edit', edit_admin_package_type_path(package_type)
+            %td= link_to 'Destroy', admin_package_type_path(package_type), method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      %br/
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

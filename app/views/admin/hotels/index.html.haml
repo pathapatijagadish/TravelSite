@@ -1,0 +1,27 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 Hotels
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/services/new"}= link_to "Add New Hotel", new_admin_hotel_path
+        .clear
+      %table.cmsTable
+        %tr
+          %th Name
+          %th Address
+          %th{:colspan => "3"}
+        - @hotels.each do |hotel|
+          %tr
+            %td= hotel.name
+            %td= hotel.address
+            %td= link_to 'Edit', edit_admin_hotel_path(hotel)
+            %td= link_to 'Destroy', admin_hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      %br/
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

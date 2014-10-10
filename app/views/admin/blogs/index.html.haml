@@ -1,0 +1,27 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 Blogs
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/services/new"}= link_to "Add New Blog", new_admin_blog_path
+        .clear
+      %table.cmsTable
+        %tr
+          %th Name
+          %th Description
+          %th{:colspan => "3"}
+        - @blogs.each do |blog|
+          %tr
+            %td= blog.name
+            %td= blog.description
+            %td= link_to 'Edit', edit_admin_blog_path(blog)
+            %td= link_to 'Destroy', admin_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      %br/
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

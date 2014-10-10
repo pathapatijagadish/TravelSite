@@ -1,0 +1,45 @@
+.bodyCnt
+  .wraper
+    #inner-main
+      .subNavCnt
+        %h1 New Hotel
+        .moreLinks
+          %ul
+            %li
+              %a.btn{:href => "/service_admin"}= link_to "Back", admin_hotels_path
+        .clear
+      .wraper
+        = nested_form_for([:admin,@hotel],:html=>{:multipart =>true} ) do |f|
+          .sectionCnt
+            %h2
+              Hotel
+            .formLayout
+              .row
+                %label{:for => "service_title"}= f.label :name
+                .inputCnt
+                  = f.text_field :name
+                .clear
+              .row
+                %label{:for => "service_description"}= f.label :address
+                .inputCnt
+                  = f.text_area :address
+                .clear
+              .row
+                = f.fields_for :images do |image|
+                  %p
+                    = image.label :image ,:style => "margin-left: 10px;"
+                    = image.file_field :avatar
+                    = image.link_to_remove "Remove image" ,:class => "remove_link",:style=>"margin-left: 110px;"
+                  %br/
+                %p
+                  = f.link_to_add "Add image", :images , :class => "btn adminAddPhoto"
+              .clear
+              %hr.seprator/
+              .actions
+                = f.submit
+        :css
+          .message{color: red;display: block;padding-left: 144px;}
+      :javascript
+        var topNavPageId = 0
+  .clear
+.clear

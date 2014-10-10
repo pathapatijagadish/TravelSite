@@ -10,6 +10,16 @@
                    <p class="posted_by">
                         <%=  index+=1 %>.&nbsp;
                         Posted By <%= comment.created_at.strftime("%b %d '%y at %H:%M") %> 
+                        <% if current_user.id == comment.user_id || current_user.is_admin? %>
+                              <span class="comment_close">
+                                <%= link_to image_tag("258.jpg"),
+                              blog_comment_path(@blog,comment),
+                              :method => :delete,
+                              :remote => true,
+                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+                              %>                    
+                            </span>                 
+                        <% end %>
                     </p>
                     <p><%= comment.description.html_safe %></p>
                 </div>
