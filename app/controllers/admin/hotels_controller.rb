@@ -1,4 +1,5 @@
 class Admin::HotelsController < ApplicationController
+  before_filter :current_admin
 	before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   layout "admin"
 

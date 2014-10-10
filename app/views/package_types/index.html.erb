@@ -1,0 +1,37 @@
+<div class='bodyCnt'>
+    <div class='wraper'>
+      <div class='' id='inner-main'>
+        <div class='subNavCnt'>
+          <h1>PackageTypes</h1>
+          <div class='clear'></div>
+        </div>
+        <table class='cmsTable'>
+          <tr>
+            <th>Transport</th>
+            <th>Price</th>
+            <th>Days</th>
+            <th>Nights</th>
+            <th>Package</th>
+            <th colspan="3"></th>
+          </tr>
+          <% @package_types.each do |package_type| %>
+            <tr>
+              <td><%= package_type.transport %></td>
+              <td><%= package_type.price %></td>
+              <td><%= package_type.days %></td>
+              <td><%= package_type.nights %></td>
+              <td><%= package_type.package_id %></td>
+              <td><%= link_to 'Show', package_type_path(package_type) %></td>
+            </tr>
+          <% end %>
+        </table>
+        <br>
+        <br>
+        <script>
+          var topNavPageId = 0
+        </script>
+      </div>
+    </div>
+    <div class='clear'></div>
+</div>
+<div class='clear'></div>

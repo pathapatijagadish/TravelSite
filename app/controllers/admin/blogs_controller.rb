@@ -1,4 +1,5 @@
 class Admin::BlogsController < ApplicationController
+    before_filter :current_admin
   	before_action :set_admin_blog, only: [:show, :edit, :update, :destroy]
     layout "admin"
   	def index

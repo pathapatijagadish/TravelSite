@@ -1,4 +1,5 @@
 class Admin::PackagesController < ApplicationController
+  before_filter :current_admin
 	before_action :set_admin_package, only: [:show, :edit, :update, :destroy]
   layout "admin"
   	def index

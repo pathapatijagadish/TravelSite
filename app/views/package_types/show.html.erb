@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transport:</strong>
+  <%= @package_type.transport %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @package_type.price %>
+</p>
+
+<p>
+  <strong>Days:</strong>
+  <%= @package_type.days %>
+</p>
+
+<p>
+  <strong>Nights:</strong>
+  <%= @package_type.nights %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <% if @package_type.images.present? %>
+    <% @package_type.images.each do |image| %>
+      <%= image_tag(image.avatar_url,size: "80x46") %>
+    <% end %>
+  <% else %>
+    <p>images are not present</p>
+  <% end %>
+</p>
+
+<%= link_to 'Back', package_types_path %>

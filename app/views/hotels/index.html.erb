@@ -1,0 +1,31 @@
+<div class='bodyCnt'>
+    <div class='wraper'>
+      <div class='' id='inner-main'>
+        <div class='subNavCnt'>
+          <h1>Hotels</h1>
+          <div class='clear'></div>
+        </div>
+        <table class='cmsTable'>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th colspan="3"></th>
+          </tr>
+          <% @hotels.each do |hotel| %>
+          <tr>
+            <td><%= hotel.name %></td>
+            <td><%= hotel.address %></td>
+            <td><%= link_to 'Show', hotel_path(hotel) %></td>
+          </tr>
+          <% end %>
+        </table>
+        <br>
+        <br>
+        <script>
+          var topNavPageId = 0
+        </script>
+      </div>
+    </div>
+    <div class='clear'></div>
+  </div>
+  <div class='clear'></div>
