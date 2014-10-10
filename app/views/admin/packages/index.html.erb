@@ -24,7 +24,6 @@
               <td><%= package.name %></td>
               <td><%= package.description %></td>
               <td><%= package.destination %></td>
-              <td><%= link_to 'Show', admin_package_path(package) %></td>
               <td><%= link_to 'Edit', edit_admin_package_path(package) %></td>
               <td><%= link_to 'Destroy', admin_package_path(package), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

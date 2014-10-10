@@ -1,0 +1,33 @@
+<div class='bodyCnt'>
+    <div class='wraper'>
+      <div class='' id='inner-main'>
+        <div class='subNavCnt'>
+          <h1>Users</h1>
+          <div class='clear'></div>
+        </div>
+        <table class='cmsTable'>
+          <tr>
+            <th>Name</th>
+            <th>email</th>
+            <th></th>
+          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <% unless user.is_admin? %>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+        <br>
+        <br>
+        <script>
+          var topNavPageId = 0
+        </script>
+      </div>
+    </div>
+    <div class='clear'></div>
+</div>
+<div class='clear'></div>

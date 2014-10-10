@@ -21,6 +21,14 @@
             </h2>
             <div class='formLayout'>
               
+              <div class="row">
+                <label for="service_title"><%= f.label :package_id %></label>
+                <div class='inputCnt'>
+                  <%= f.select :package_id, Package.all.map {|x| [x.name,x.id]}, prompt: "select category" %>
+                </div>
+                <div class='clear'></div>
+              </div>
+
               <div class='row'>
                 <label for="service_title"><%= f.label :transport %></label>
                 <div class='inputCnt'>
